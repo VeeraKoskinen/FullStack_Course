@@ -1,5 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
+import Unicafe from './Unicafe'
 
 
 const Otsikko = (props) => {
@@ -66,6 +67,6 @@ const App = () => {
 }
 
 ReactDOM.render(
-  <App />,
+  <Unicafe />,
   document.getElementById('root')
 )
