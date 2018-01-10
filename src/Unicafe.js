@@ -13,7 +13,12 @@ const Button = (props) => {
 
 const Statistic = (props) => {
     return (
-        <div>{props.name} {props.number} {props.text}</div>
+        
+        <tr>
+            <td>{props.name}</td> 
+            <td>{props.number} {props.text}</td>
+        </tr>
+        
     )
 }
 
@@ -29,13 +34,17 @@ const Statistics = (props) => {
     if (allAnswers !== 0) {
         return (
             <div>
-                <h1>statistiikka</h1>
-                <Statistic name={name1} number={props.good}/>
-                <Statistic name={name2} number={props.ok}/>
-                <Statistic name={name3} number={props.bad}/>
-                <Statistic name="keskiarvo: " number={precisionRound(average,2)}/>
-                <Statistic name="positiivisia: " number={precisionRound(percentage,2)} text="%"/>
-            </div>  
+                <h1>statistiikka</h1>       
+                <table>
+                    <tbody>
+                        <Statistic name={name1} number={props.good}/>
+                        <Statistic name={name2} number={props.ok}/>
+                        <Statistic name={name3} number={props.bad}/>
+                        <Statistic name="keskiarvo: " number={precisionRound(average,2)}/>
+                        <Statistic name="positiivisia: " number={precisionRound(percentage,2)} text="%"/>      
+                    </tbody>       
+                </table>  
+            </div>      
         )
     }   
     return (
