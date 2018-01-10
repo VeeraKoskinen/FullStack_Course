@@ -25,17 +25,27 @@ const Statistics = (props) => {
     const name1 = "hyvä: ";
     const name2 = "neutraali: ";
     const name3 = "huono: ";
+    
+    if (allAnswers !== 0) {
+        return (
+            <div>
+                <h1>statistiikka</h1>
+                <Statistic name={name1} number={props.good}/>
+                <Statistic name={name2} number={props.ok}/>
+                <Statistic name={name3} number={props.bad}/>
+                <Statistic name="keskiarvo: " number={precisionRound(average,2)}/>
+                <Statistic name="positiivisia: " number={precisionRound(percentage,2)} text="%"/>
+            </div>  
+        )
+    }   
     return (
         <div>
             <h1>statistiikka</h1>
-            <Statistic name={name1} number={props.good}/>
-            <Statistic name={name2} number={props.ok}/>
-            <Statistic name={name3} number={props.bad}/>
-            <Statistic name="keskiarvo: " number={precisionRound(average,2)}/>
-            <Statistic name="positiivisia: " number={precisionRound(percentage,2)} text="%"/>
-        </div>    
+            <p>yhtään palautetta ei ole annettu</p>
+        </div>
+    )   
 
-    )
+    
 }
 
 class Unicafe extends React.Component {
