@@ -17,7 +17,8 @@ class Anekdootit extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            selected: 0
+            selected: 0,
+            mostVoted: this.props.anecdotes[0]
         }
     }
 
@@ -29,7 +30,25 @@ class Anekdootit extends React.Component {
     vote = () => {
         this.props.anecdotes[this.state.selected].votes += 1
         console.log(this.props.anecdotes[this.state.selected].votes)
+        this.theMostVoted(this.props.anecdotes[this.state.selected])
         this.forceUpdate()
+    }
+
+    theMostVoted = (lastVoted) => {
+        if (this.state.mostVoted.votes <= lastVoted.votes) {
+            this.setState({mostVoted: lastVoted})
+        } 
+        return this.state.mostVoted
+    }
+
+    BestAnecdote = () => {
+        return (
+            <div>
+                <b>anecdote with most votes:</b>
+                <p>{this.state.mostVoted.name}</p>
+                <p>Has {this.state.mostVoted.votes} votes</p>
+            </div>    
+        )
     }
 
     render() {
@@ -38,7 +57,8 @@ class Anekdootit extends React.Component {
             <p>{this.props.anecdotes[this.state.selected].name}</p>
             <p>Has {this.props.anecdotes[this.state.selected].votes} votes</p>
             <Button function={this.vote} name="vote"/>
-            <Button function={this.setSelected} name="next anecdote"/> 
+            <Button function={this.setSelected} name="next anecdote"/>        
+            {this.BestAnecdote()}
           </div>
         )
     }
