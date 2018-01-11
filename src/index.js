@@ -77,7 +77,17 @@ const anecdotes = [
     'Debugging is twice as hard as writing the code in the first place. Therefore, if you write the code as cleverly as possible, you are, by definition, not smart enough to debug it.'
 ]
 
+const copy = anecdotes.slice();
+const anecdoteObjects = copy.map((anecdote) => {
+    return {
+        name: anecdote,
+        votes: 0
+    }
+})
+
+console.log("anecdoteObjects",anecdoteObjects)
+
 ReactDOM.render(
-  <Anekdootit anecdotes={anecdotes}/>,
+  <Anekdootit anecdotes={anecdoteObjects}/>,
   document.getElementById('root')
 )
