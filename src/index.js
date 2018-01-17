@@ -38,31 +38,54 @@ const Yhteensa = (props) => {
     )
 }
 
+
+const Kurssi = (kurssi) => {
+    return (
+        <div> 
+            <h1>{kurssi.nimi}</h1>
+            <h3>sisältö</h3>
+            <ul>
+                {kurssi.osat.map(osa =>
+                    <li>{osa.nimi}, tehtäviä {osa.tehtavia}</li>
+                    )
+                }
+            </ul>
+        </div>
+    )
+  }
+
 const App = () => {
 
   const kurssi = { 
-    nimi:  'Half Stack -sovelluskehitys',
+    nimi: 'Half Stack -sovelluskehitys',
     osat: [
-        {
-          nimi: 'Reactin perusteet',
-          tehtavia: 10,
-        },
-        {
-          nimi: 'Tiedonvälitys propseilla',
-          tehtavia: 7
-        },
-        {
-          nimi: 'Komponenttien tila',
-          tehtavia: 14
-        }
+      {
+        nimi: 'Reactin perusteet',
+        tehtavia: 10,
+        id: 1
+      },
+      {
+        nimi: 'Tiedonvälitys propseilla',
+        tehtavia: 7,
+        id: 2
+      },
+      {
+        nimi: 'Komponenttien tila',
+        tehtavia: 14,
+        id: 3
+      }
     ]
     }
+
   return (
-      <div>
+      /*<div>
         <Otsikko kurssi={kurssi}/>
         <Sisalto osat={kurssi.osat} />
         <Yhteensa osat={kurssi.osat} />
-      </div>
+      </div>*/
+        <div>
+            {Kurssi(kurssi)}
+        </div>    
   )
  
 }
@@ -88,6 +111,7 @@ const anecdoteObjects = copy.map((anecdote) => {
 console.log("anecdoteObjects",anecdoteObjects)
 
 ReactDOM.render(
-  <Anekdootit anecdotes={anecdoteObjects}/>,
+
+  <App/>,
   document.getElementById('root')
 )
