@@ -30,11 +30,15 @@ const Sisalto = (props) => {
     )
 }
 
-const Yhteensa = (props) => {
+const Yhteensa = (osat) => {
+    let maara = 0
+    osat.map(osa =>
+        maara += osa.tehtavia
+    )
+
+
     return (
-        <div>
-            <p>yhteensä {props.osat[0].tehtavia + props.osat[1].tehtavia + props.osat[2].tehtavia}</p>
-        </div>
+        <div>yhteensä {maara} tehtävää</div>
     )
 }
 
@@ -85,9 +89,9 @@ const App = () => {
       </div>*/
         <div>
             {Kurssi(kurssi)}
+            {Yhteensa(kurssi.osat)}
         </div>    
-  )
- 
+  ) 
 }
 
 
