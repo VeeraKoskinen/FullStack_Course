@@ -31,17 +31,25 @@ const Sisalto = (props) => {
 }
 
 const Yhteensa = (osat) => {
-    let maara = 0
-    osat.map(osa =>
-        maara += osa.tehtavia
-    )
-
-
+    let maara = osat.reduce(function (edellinen, osa) {
+               return edellinen + osa.tehtavia;
+            }, 0);
+    
+    console.log(maara)        
     return (
+        
         <div>yhteensä {maara} tehtävää</div>
     )
 }
 
+/*
+[0, 1, 2, 3, 4].reduce(
+    (accumulator, currentValue, currentIndex, array) => {
+      return accumulator + currentValue;
+    },
+    10
+  );
+*/
 
 const Kurssi = (kurssi) => {
     return (
@@ -50,7 +58,7 @@ const Kurssi = (kurssi) => {
             <h3>sisältö</h3>
             <ul>
                 {kurssi.osat.map(osa =>
-                    <li>{osa.nimi}, tehtäviä {osa.tehtavia}</li>
+                    <li key={osa.id}>{osa.nimi}, tehtäviä {osa.tehtavia}</li>
                     )
                 }
             </ul>
@@ -82,11 +90,6 @@ const App = () => {
     }
 
   return (
-      /*<div>
-        <Otsikko kurssi={kurssi}/>
-        <Sisalto osat={kurssi.osat} />
-        <Yhteensa osat={kurssi.osat} />
-      </div>*/
         <div>
             {Kurssi(kurssi)}
             {Yhteensa(kurssi.osat)}
