@@ -42,14 +42,6 @@ const Yhteensa = (osat) => {
     )
 }
 
-/*
-[0, 1, 2, 3, 4].reduce(
-    (accumulator, currentValue, currentIndex, array) => {
-      return accumulator + currentValue;
-    },
-    10
-  );
-*/
 
 const Kurssi = (kurssi) => {
     return (
@@ -66,35 +58,71 @@ const Kurssi = (kurssi) => {
     )
   }
 
+
+const Kurssit = (kurssit)  => {
+    return (
+        <div>
+            {kurssit.map((kurssi) => {
+                return (
+                    <div key={kurssi.id}>
+                        {Kurssi(kurssi)}
+                        {Yhteensa(kurssi.osat)} 
+                    </div>
+                )
+            })}
+         
+        </div>    
+    )
+}
+
+
 const App = () => {
 
-  const kurssi = { 
-    nimi: 'Half Stack -sovelluskehitys',
-    osat: [
-      {
-        nimi: 'Reactin perusteet',
-        tehtavia: 10,
-        id: 1
-      },
-      {
-        nimi: 'Tiedonvälitys propseilla',
-        tehtavia: 7,
-        id: 2
-      },
-      {
-        nimi: 'Komponenttien tila',
-        tehtavia: 14,
-        id: 3
-      }
-    ]
+  const kurssit = [
+    {
+      nimi: 'Half Stack -sovelluskehitys',
+      id: 1,
+      osat: [
+        {
+          nimi: 'Reactin perusteet',
+          tehtavia: 10,
+          id: 1
+        },
+        {
+          nimi: 'Tiedonvälitys propseilla',
+          tehtavia: 7,
+          id: 2
+        },
+        {
+          nimi: 'Komponenttien tila',
+          tehtavia: 14,
+          id: 3
+        }
+      ]
+    },
+    {
+      nimi: 'Node.js',
+      id: 2,
+      osat: [
+        {
+          nimi: 'Routing',
+          tehtavia: 3,
+          id: 1
+        },
+        {
+          nimi: 'Middlewaret',
+          tehtavia: 7,
+          id: 2
+        }
+      ]
     }
+  ]
 
-  return (
+    return (
         <div>
-            {Kurssi(kurssi)}
-            {Yhteensa(kurssi.osat)}
+            {Kurssit(kurssit)}
         </div>    
-  ) 
+    ) 
 }
 
 
