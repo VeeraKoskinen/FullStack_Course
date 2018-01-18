@@ -2,62 +2,17 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import Unicafe from './Unicafe'
 import Anekdootit from './Anekdootit'
-
-
-const Otsikko = (props) => {
-    return (
-        <div>
-          <h1>{props.kurssi.nimi}</h1>
-        </div>
-      )
-}
-
-const Osa = (props) => {
-    return (
-        <div>
-            <p>{props.osa} {props.tehtavia} </p>
-        </div>    
-    )
-}
-
-const Sisalto = (props) => {
-    return (
-        <div>
-            <Osa osa={props.osat[0].nimi} tehtavia={props.osat[0].tehtavia}/>
-            <Osa osa={props.osat[1].nimi} tehtavia={props.osat[1].tehtavia} />
-            <Osa osa={props.osat[2].nimi} tehtavia={props.osat[2].tehtavia}/>
-        </div>    
-    )
-}
+import Kurssi from './Kurssi'
 
 const Yhteensa = (osat) => {
     let maara = osat.reduce(function (edellinen, osa) {
                return edellinen + osa.tehtavia;
-            }, 0);
-    
-    console.log(maara)        
+            }, 0);     
     return (
         
         <div>yhteensä {maara} tehtävää</div>
     )
 }
-
-
-const Kurssi = (kurssi) => {
-    return (
-        <div> 
-            <h1>{kurssi.nimi}</h1>
-            <h3>sisältö</h3>
-            <ul>
-                {kurssi.osat.map(osa =>
-                    <li key={osa.id}>{osa.nimi}, tehtäviä {osa.tehtavia}</li>
-                    )
-                }
-            </ul>
-        </div>
-    )
-  }
-
 
 const Kurssit = (kurssit)  => {
     return (
@@ -74,6 +29,12 @@ const Kurssit = (kurssit)  => {
         </div>    
     )
 }
+
+
+
+
+
+
 
 
 const App = () => {
